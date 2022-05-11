@@ -1,13 +1,13 @@
 
 Gem::Specification.new do |spec|
-  spec.name          = "mongem"
+  spec.name          = "sshcm"
   spec.version       = `cat VERSION`.chomp
-  spec.authors       = ["Pierre Alphonse", "Camille Paquet"]
-  spec.email         = ["pierre.alphonse@orange.com", "camille.paquet@orange.com"]
+  spec.authors       = ["Romain GEORGES"]
+  spec.email         = ["romain@ultragreen.net"]
 
-  spec.summary       = "Webservice endpoint mock provider"
-  spec.description   = "Webservice endpoint mock provider"
-  spec.homepage      = "https://github.com/Ultragreen/MockWS"
+  spec.summary       = "SSH Configuration manager"
+  spec.description   = "SSH Configuration manager"
+  spec.homepage      = "https://github.com/Ultragreen/sshcm"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 

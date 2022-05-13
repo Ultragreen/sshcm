@@ -7,6 +7,8 @@ require "roodi_task"
 require 'code_statistics'
 require 'yard'
 require 'yard/rake/yardoc_task.rb'
+require "carioca/rake/manage"
+
 Rake::VersionTask.new
 
 RSpec::Core::RakeTask.new(:spec)

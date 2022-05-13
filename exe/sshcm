@@ -1,0 +1,4 @@
+require 'sshcm'
+
+cmd = SSHcm::Application::new
+cmd.test

@@ -1,0 +1,7 @@
+---
+:sshcm:
+  :production: {}
+  :staging: {}
+  :development: {}
+  :test: {}
+  :default: {}

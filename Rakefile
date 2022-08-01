@@ -1,37 +1,45 @@
-require "bundler/gem_tasks"
-require "rspec/core/rake_task"
-require "version"
+# frozen_string_literal: true
+
+require 'bundler/gem_tasks'
+require 'rspec/core/rake_task'
+require 'version'
 require 'rake/version_task'
-require "roodi"
-require "roodi_task"
+require 'rubocop/rake_task'
 require 'code_statistics'
 require 'yard'
-require 'yard/rake/yardoc_task.rb'
-require "carioca/rake/manage"
+require 'yard/rake/yardoc_task'
+require 'carioca/rake/manage'
 
 Rake::VersionTask.new
-
+RuboCop::RakeTask.new
 RSpec::Core::RakeTask.new(:spec)
 
-RoodiTask.new() do | t |
-    t.patterns = %w(lib/**/*.rb)
-    t.config = "ultragreen_roodi_coding_convention.yml"
-  end
-
-task :default => :spec
+task default: :spec
 
 YARD::Rake::YardocTask.new do |t|
-    t.files   = [ 'lib/**/*.rb', '-', 'doc/**/*','spec/**/*_spec.rb']
-    t.options += ['-o', "yardoc"]
+  t.files = ['lib/**/*.rb', '-', 'doc/**/*', 'spec/**/*_spec.rb']
+  t.options += ['-o', 'yardoc']
 end
 
 YARD::Config.load_plugin('yard-rspec')
 
 namespace :yardoc do
-    task :clobber do
-        rm_r "yardoc" rescue nil
-        rm_r ".yardoc" rescue nil
-        rm_r "pkg" rescue nil
+  task :clobber do
+    begin
+      rm_r 'yardoc'
+    rescue StandardError
+      nil
     end
+    begin
+      rm_r '.yardoc'
+    rescue StandardError
+      nil
+    end
+    begin
+      rm_r 'pkg'
+    rescue StandardError
+      nil
+    end
+  end
 end
-task :clobber => "yardoc:clobber"
+task clobber: 'yardoc:clobber'
